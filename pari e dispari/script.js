@@ -44,12 +44,16 @@
 
 
 //CON FUNZIONE
-const userChoice = prompt("Pari o dispari?").toLowerCase();
-const userNumber = Number(prompt("Scegli un numero da 1 a 5"));
+let userChoice;
+do{
+    userChoice = prompt("Pari o dispari?").toLowerCase();
+} while(userChoice !== "pari" && userChoice !== "dispari")
+    
+let userNumber;
+do{
+    userNumber = Number(prompt("Scegli un numero da 1 a 5"))
+} while(isNaN(userNumber) || userNumber < 1 || userNumber > 5)
 
-if ((userChoice !== "pari" && userChoice !== "dispari") || isNaN(userNumber) || userNumber < 1 || userNumber > 5) {
-    alert("Non valido, ricarica la pagina e prova di nuovo");
-} else {
     function getRandomNumber() {
         return Math.floor(Math.random() * 5) + 1;
     }
@@ -61,11 +65,7 @@ if ((userChoice !== "pari" && userChoice !== "dispari") || isNaN(userNumber) || 
     alert(`La somma dei due numeri è ${sum}`);
 
     function isEven(sum) {
-        if (sum % 2 === 0) {
-            return "pari";
-        } else {
-            return "dispari";
-        }
+        return sum % 2 === 0
     }
 
     const result = isEven(sum);
@@ -75,5 +75,5 @@ if ((userChoice !== "pari" && userChoice !== "dispari") || isNaN(userNumber) || 
     } else {
         alert("Il vincitore è il computer");
     }
-}
+
 
